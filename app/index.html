@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download app</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+    .container { max-width: 520px; margin: 0 auto; }
+    a.button { display: block; padding: 14px 16px; margin: 12px 0; text-align: center; text-decoration: none; border-radius: 12px; border: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Download app</h1>
+    <p>Select store depending on your platform</p>
+
+    <a id="appStoreButton" class="button" href="https://apps.apple.com/app/id6504457012">
+      App Store
+    </a>
+
+    <a id="playStoreButton" class="button" href="https://play.google.com/store/apps/details?id=com.aliakseikartashou.repit">
+      Google Play
+    </a>
+  </div>
+
+  <script>
+    (function () {
+      var userAgent = navigator.userAgent || "";
+      var isAndroid = /Android/i.test(userAgent);
+
+      var isIosDevice =
+        /iPhone|iPad|iPod/i.test(userAgent) ||
+        (/Macintosh/i.test(userAgent) && ("ontouchend" in document));
+
+      var appStoreUrl = document.getElementById("appStoreButton").href;
+      var playStoreUrl = document.getElementById("playStoreButton").href;
+
+      if (isAndroid) {
+        window.location.replace(playStoreUrl);
+        return;
+      }
+
+      if (isIosDevice) {
+        window.location.replace(appStoreUrl);
+        return;
+      }
+    })();
+  </script>
+</body>
+</html>
